@@ -1,0 +1,19 @@
+{
+  "packageDirectories": [
+    {
+      "versionName": "ver 0.1",
+      "versionNumber": "0.1.0.NEXT",
+      "path": "force-app",
+      "default": true,
+      "package": "ExploreMoreApp",
+      "versionDescription": "ExploreMore  Package"
+    }
+  ],
+  "name": "DataCloudSampleAppSetup",
+  "namespace": "",
+  "sfdcLoginUrl": "https://login.salesforce.com",
+  "sourceApiVersion": "62.0",
+  "packageAliases": {
+    "ExploreMoreApp": "0HoHr000000XbGXKA0"
+  }
+}

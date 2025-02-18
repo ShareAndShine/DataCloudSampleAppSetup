@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>12 Seat</fullName>
+        <default>false</default>
+        <label>12 Seat</label>
+    </customValue>
+    <customValue>
+        <fullName>19-22 Cubic Metre</fullName>
+        <default>false</default>
+        <label>19-22 Cubic Metre</label>
+    </customValue>
+    <customValue>
+        <fullName>2WD</fullName>
+        <default>false</default>
+        <label>2WD</label>
+    </customValue>
+    <customValue>
+        <fullName>4WD</fullName>
+        <default>false</default>
+        <label>4WD</label>
+    </customValue>
+    <customValue>
+        <fullName>6 Cubic Metre</fullName>
+        <default>false</default>
+        <label>6 Cubic Metre</label>
+    </customValue>
+    <customValue>
+        <fullName>7 Seat</fullName>
+        <default>false</default>
+        <label>7 Seat</label>
+    </customValue>
+    <customValue>
+        <fullName>8 Seat</fullName>
+        <default>false</default>
+        <label>8 Seat</label>
+    </customValue>
+    <customValue>
+        <fullName>9 Cubic Metre</fullName>
+        <default>false</default>
+        <label>9 Cubic Metre</label>
+    </customValue>
+    <customValue>
+        <fullName>AWD</fullName>
+        <default>false</default>
+        <label>AWD</label>
+    </customValue>
+    <customValue>
+        <fullName>Bus</fullName>
+        <default>false</default>
+        <label>Bus</label>
+    </customValue>
+    <customValue>
+        <fullName>Compact</fullName>
+        <default>false</default>
+        <label>Compact</label>
+    </customValue>
+    <customValue>
+        <fullName>Double Cab</fullName>
+        <default>false</default>
+        <label>Double Cab</label>
+    </customValue>
+    <customValue>
+        <fullName>Economy</fullName>
+        <default>false</default>
+        <label>Economy</label>
+    </customValue>
+    <customValue>
+        <fullName>Elite</fullName>
+        <default>false</default>
+        <label>Elite</label>
+    </customValue>
+    <customValue>
+        <fullName>Fullsize</fullName>
+        <default>false</default>
+        <label>Fullsize</label>
+    </customValue>
+    <customValue>
+        <fullName>Hybrid</fullName>
+        <default>false</default>
+        <label>Hybrid</label>
+    </customValue>
+    <customValue>
+        <fullName>Intermediate</fullName>
+        <default>false</default>
+        <label>Intermediate</label>
+    </customValue>
+    <customValue>
+        <fullName>Luxury</fullName>
+        <default>false</default>
+        <label>Luxury</label>
+    </customValue>
+    <customValue>
+        <fullName>Premium</fullName>
+        <default>false</default>
+        <label>Premium</label>
+    </customValue>
+    <customValue>
+        <fullName>Sedan</fullName>
+        <default>false</default>
+        <label>Sedan</label>
+    </customValue>
+    <customValue>
+        <fullName>Single Cab</fullName>
+        <default>false</default>
+        <label>Single Cab</label>
+    </customValue>
+    <customValue>
+        <fullName>Sport</fullName>
+        <default>false</default>
+        <label>Sport</label>
+    </customValue>
+    <customValue>
+        <fullName>Standard</fullName>
+        <default>false</default>
+        <label>Standard</label>
+    </customValue>
+    <customValue>
+        <fullName>SUV</fullName>
+        <default>false</default>
+        <label>SUV</label>
+    </customValue>
+    <customValue>
+        <fullName>Ute</fullName>
+        <default>false</default>
+        <label>Ute</label>
+    </customValue>
+    <customValue>
+        <fullName>Van</fullName>
+        <default>false</default>
+        <label>Van</label>
+    </customValue>
+    <customValue>
+        <fullName>Bike</fullName>
+        <default>false</default>
+        <label>Bike</label>
+    </customValue>
+    <customValue>
+        <fullName>Scooter</fullName>
+        <default>false</default>
+        <label>Scooter</label>
+    </customValue>
+    <description>Categories for the rented vehicles</description>
+    <masterLabel>Vehicle Category</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>
