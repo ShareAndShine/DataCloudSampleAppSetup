@@ -1,18 +1,75 @@
-# Salesforce DX Project: Next Steps
+Data Ingestion:
+===============
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+a. Source:CRM | Obj: Contact 
+		- update field level permissions for Contacts object, custom fields External ID and RAVG Retail Membership Number, RAVG_Retail_Points_Balance__c enabling Read Access
+		- Update the RAVG Retail Membership Number Field Label to  Retail Membership Number & RAVG_Retail_Membership_Number_c Field API Name to  Retail_Membership_Number_c
+		- Update the RAVG Retail Points Balance Field Label to Retail Points Balance & RAVG_Retail_Points_Balance__c Field API Name to Retail_Points_Balance__c
+		- Add 3 new formula fields
+			- Identification Name | Should return static text "Retail Membership"
+			- Identification Type | Should return static text "Loyalty Program"
+			- Birth Date | Should return date | Extract value from BirthDate Std. field
 
-## How Do You Plan to Deploy Your Changes?
+b. Source:CRM | Obj: Case
+		- update field level permissions for Case object, custom field ParentID enabling Read Access
+		- Create new formula field  "Action Priority" on case object | return type - Text		\
+				IF(sourceField['IsEscalated'] == "true"
+				  , IF(
+					  sourceField['Priority'] == "High", "P1 - Escalated High",  IF(
+					  sourceField['Priority'] == "Medium", "P3 - Escalated Medium", "P4 - Escalated Low"
+				  ))
+				  , IF(
+					  sourceField['Priority'] == "High", "P2 - High",  IF(
+					  sourceField['Priority'] == "Medium", "P5 - Medium", "P6 - Low"  
+				  ))
+				)
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
 
-## Configure Your Salesforce DX Project
+c. Source:CRM | Bookings
+		- Remove Last Modified By ID and Last Referenced Date fields
+		- Create new formula field  "Purpose" with return type - Text
+			IF(
+			  AND(sourceField['Is_Leisure__c'] == "true", sourceField['Is_Business__c'] == "true")
+			  , "Mixed"
+			  , IF(
+				AND(sourceField['Is_Leisure__c'] == "true", sourceField['Is_Business__c'] == "false")
+				, "Personal"
+				, IF (
+				  AND(sourceField['Is_Leisure__c'] == "false", sourceField['Is_Business__c'] == "true")
+				  , "Business"
+				  , "Unspecified"
+				)
+			  )
+			)
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
+d. Source:CRM | Rental
+		- Check: Update field level permission so that all fields can be read by Data Cloud Salesforce Connector
+		- Create new formula field  "Purpose" with return type - Text
+			IF(
+			  AND(sourceField['Is_Leisure__c'] == "true", sourceField['Is_Business__c'] == "true")
+			  , "Mixed"
+			  , IF(
+				AND(sourceField['Is_Leisure__c'] == "true", sourceField['Is_Business__c'] == "false")
+				, "Personal"
+				, IF (
+				  AND(sourceField['Is_Leisure__c'] == "false", sourceField['Is_Business__c'] == "true")
+				  , "Business"
+				  , "Unspecified"
+				)
+			  )
+			)
+		- Create new formula field  "Combined Children Seat Count" with return type - Number
+			NUMBER(sourceField['Baby_Seat_Count__c']) + NUMBER(sourceField['Booster_Seat_Count__c'])
 
-## Read All About It
 
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+e. Source:CRM | Rental Preference
+		- Rename Field label 
+				- Leisure - Protection Coverage  to Leisure - Protection Coverage - Source
+				- Business - Protection Coverage to Business - Protection Coverage - Source
+		- Introduce  new formula field  "Leisure - Protection Coverage" with return type - Number
+				- IF(ISEMPTY(sourceField['Leisure_Protection_Coverage__c']), "NONE", sourceField['Leisure_Protection_Coverage__c'])
+		- Create new formula field  "Business - Protection Coverage" with return type - Number
+				- IF(ISEMPTY(sourceField['Business_Protection_Coverage__c']), "NONE", sourceField['Business_Protection_Coverage__c'])
+		- Check if data type for the fields "Leisure Preferences Last Updated Date" and "Business Preferences Last Updated Date" are date, else use formula and change to date
+		
+ 
