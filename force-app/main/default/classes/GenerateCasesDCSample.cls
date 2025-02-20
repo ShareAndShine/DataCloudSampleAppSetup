@@ -2,7 +2,7 @@ public class GenerateCasesDCSample {
   @InvocableMethod(label='Generate Cases' description='Generate records for Case object')
   public static void generateCases() {
 
-    Map<String, String> contactCollection = new Map<String, String>();
+    /*Map<String, String> contactCollection = new Map<String, String>();
     List<Contact> allContacts = [SELECT Id, External_ID__c FROM Contact];
     for (Contact c : allContacts) {
       contactCollection.put(c.External_ID__c, c.Id);
@@ -16,5 +16,6 @@ public class GenerateCasesDCSample {
     Case case5 = new Case(Origin = 'Phone', ContactId = contactCollection.get('cVALLc3-5d39-44b0-aabf-f2f90cb7dd22'), Reason = 'Roadside Assistance', CreatedDate = Datetime.valueOf('2024-04-08 07:36:41'), Description = 'I am having trouble starting my car, and I suspect that the battery may be flat. I have tried jump-starting the car, but it still won\'t start. Could you provide me with some advice on what to do next? We are in the midst of the short holiday and this prevents us from completing our trip.', IsEscalated = true, Priority = 'High', Status = 'Closed', Subject = 'Flat battery', Type = 'Problem', ClosedDate = Datetime.valueOf('2024-04-08 10:15:33')); cases.add(case5);
 
     insert cases;
+    */
   }
 }

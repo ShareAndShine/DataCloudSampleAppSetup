@@ -72,4 +72,22 @@ e. Source:CRM | Rental Preference
 				- IF(ISEMPTY(sourceField['Business_Protection_Coverage__c']), "NONE", sourceField['Business_Protection_Coverage__c'])
 		- Check if data type for the fields "Leisure Preferences Last Updated Date" and "Business Preferences Last Updated Date" are date, else use formula and change to date
 		
- 
+ f. Source: S3 | Customer
+		- Create new formula field  "Party Identification Id" with return type text		
+			- CONCAT("LoyaltyProgram_RetailMembership_", sourceField['Customer Ref Number'])
+		- Create new formula field  "Party Identification Type" with return type text and hardcode value "Retail Membership"
+		- Create new formula field  "Contact Point Email Id" with return type text		
+			- CONCAT(sourceField['Customer Ref Number'], "_ContactPointEmail_", sourceField['Email'])
+		- Check data type of email field  , if its not of "Email" ->  update type to Email
+
+e. Source: S3 | Order Header
+		- Check data type of customer number field  , if its not of "Text" ->  update type to Text
+		- Create new formula field  "Internal Business Unit" with return type text and hardcode value "eComm_OutdoorAdventure_Online_Retail"
+
+
+f. Source: S3 | Order Detail
+		- Check data type of SKU field  , if its not of "Text" ->  update type to Text
+		- Check data type of Order Number field  , if its not of "Text" ->  update type to Text
+		- Check data type of Order Line Number field  , if its not of "Text" ->  update type to Text
+		- Create new formula field  "Order Line Primary Key" with return type text 
+			- CONCAT(sourceField['Order Number']+'_'+ sourceField['Order Line Number'])
